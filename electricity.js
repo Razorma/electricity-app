@@ -71,29 +71,17 @@ function Electricity() {
     * return true and substract from unit available if there is enough units to use the appliance
     * other wise return false and do nothing.
     */
+
     function useAppliance(appliance) {
-        if(appliance==="TV" && unitsAvailable>=3){
-            unitsAvailable-=3
-           return true
-        }else if(appliance==="stove" && unitsAvailable>=10){
-            unitsAvailable-=10
-            return true
+        let requiredUnits = appliances[appliance];
+        if (unitsAvailable >= requiredUnits) {
+          unitsAvailable -= requiredUnits;
+          return true;
         }
-        else if(appliance==="Kettle" && unitsAvailable>=5){
-            unitsAvailable-=5
-            return true
-        }
-        else if(appliance==="Fridge" && unitsAvailable>=15){
-            unitsAvailable-=15
-            return true
-        }else{
-            return false
-        }
-        
-    }
+        return false;
+      }
 
     function advanceTaken() {
-
         return advancePaid
     }
 
