@@ -11,13 +11,15 @@ const ClearNow = document.querySelector(".ClearNow")
 let initial = 0;
 // Factory Function instance 
 const electricity =  Electricity();
+unitsAvailable.innerHTML=localStorage.getItem("unitsavailable")||initial.toFixed(2)
 totalUnits.innerHTML=localStorage.getItem("totalunits")||initial.toFixed(2)
 totalAmount.innerHTML=localStorage.getItem("totalamount")||initial.toFixed(2)
-electricity.updateTotals(parseFloat(totalAmount.innerHTML),parseFloat(totalUnits.innerHTML))
+electricity.updateTotals(parseFloat(totalAmount.innerHTML),parseFloat(totalUnits.innerHTML),parseFloat(unitsAvailable.innerHTML))
 
 
 
 topupNow.addEventListener("click",function(){
+  
     const checkedBtn = document.querySelector('input[name="buyElectricity"]:checked');
     if (checkedBtn) {
         const selectedValue = checkedBtn.value;
@@ -26,6 +28,10 @@ topupNow.addEventListener("click",function(){
         unitsAvailable.innerHTML=electricity.getUnitsAvailable()
         totalUnits.innerHTML=electricity.totalUnitsBought()
         totalAmount.innerHTML=electricity.totalAmountSpent()
+        localStorage.setItem(
+            "unitsavailable",
+            parseFloat(unitsAvailable.innerHTML)
+          );
         localStorage.setItem(
             "totalunits",
             parseFloat(totalUnits.innerHTML)
@@ -45,6 +51,10 @@ useNow.addEventListener("click",function(){
         totalUnits.innerHTML=electricity.totalUnitsBought()
         totalAmount.innerHTML=electricity.totalAmountSpent()
         localStorage.setItem(
+            "unitsavailable",
+            parseFloat(unitsAvailable.innerHTML)
+          );
+        localStorage.setItem(
             "totalunits",
             parseFloat(totalUnits.innerHTML)
           );
@@ -57,8 +67,10 @@ useNow.addEventListener("click",function(){
 
 // DOM events here
 ClearNow.addEventListener("click",function(){
-     localStorage.clear()
-     unitsAvailable.innerHTML=0
-        totalUnits.innerHTML=initial.toFixed(2)
-        totalAmount.innerHTML=initial.toFixed(2)
+    localStorage.clear()
+    unitsAvailable.innerHTML=0
+    
+       totalUnits.innerHTML=initial.toFixed(2)
+       totalAmount.innerHTML=initial.toFixed(2)
+       electricity.updateTotals(parseFloat(totalAmount.innerHTML),parseFloat(totalUnits.innerHTML),parseFloat(unitsAvailable.innerHTML))
 }); 

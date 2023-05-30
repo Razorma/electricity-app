@@ -92,10 +92,12 @@ function Electricity() {
     function totalUnitsBought(){
         return totalUnits
     }
-    function updateTotals(totalA,totalU){
+    function updateTotals(totalA,totalU, unitsA){
         totalAmount=totalA;
         totalUnits=totalU;
+        unitsAvailable= unitsA;
     }
+
 
     return {
         advanceTaken,
