@@ -79,109 +79,109 @@ describe("The buy electricity app", function () {
     })
 
 
-    // it("should allow a user to take advance and pay for the advance and use appliances", function () {
+    it("should allow a user to take advance and pay for the advance and use appliances", function () {
 
-    //     const electricity = Electricity();
+        const electricity = Electricity();
 
-    //     electricity.topUpElectricity('advance');
-    //     assert.isTrue(electricity.advanceTaken());
+        electricity.topUpElectricity('advance');
+        assert.isTrue(electricity.advanceTaken());
 
-    //     electricity.topUpElectricity(20);
-    //     assert.equal(21, electricity.getUnitsAvailable());
-    //     assert.isTrue(electricity.advanceTaken());
+        electricity.topUpElectricity(20);
+        assert.equal(21, electricity.getUnitsAvailable());
+        assert.isTrue(electricity.advanceTaken());
 
-    //     // advanced ignored as you still owe R10
-    //     electricity.topUpElectricity('advance');
-    //     electricity.topUpElectricity(20);
-    //     assert.isFalse(electricity.advanceTaken());
-    //     assert.equal(28, electricity.getUnitsAvailable());
+        // advanced ignored as you still owe R10
+        electricity.topUpElectricity('advance');
+        electricity.topUpElectricity(20);
+        assert.isFalse(electricity.advanceTaken());
+        assert.equal(28, electricity.getUnitsAvailable());
 
-        // assert.isTrue(electricity.useAppliance('TV'));
+        assert.isTrue(electricity.useAppliance('TV'));
 
-        // // advanced is valid now
-        // electricity.topUpElectricity('advance');
+        // advanced is valid now
+        electricity.topUpElectricity('advance');
 
-        // assert.equal(46, electricity.getUnitsAvailable());
-    // })
+        assert.equal(46, electricity.getUnitsAvailable());
+    })
 
-    // it("should allow appliances usage", function () {
+    it("should allow appliances usage", function () {
 
-    //     const electricity = Electricity();
+        const electricity = Electricity();
 
-    //     electricity.topUpElectricity(50);
-    //     assert.isTrue(electricity.useAppliance('TV'));
-    //     assert.isTrue(electricity.useAppliance('Kettle'));
+        electricity.topUpElectricity(50);
+        assert.isTrue(electricity.useAppliance('TV'));
+        assert.isTrue(electricity.useAppliance('Kettle'));
 
-    //     assert.equal(27, electricity.getUnitsAvailable());
+        assert.equal(27, electricity.getUnitsAvailable());
 
-    // })
+    })
 
-    // it("should not allow appliance usage if not enough electricity", function () {
+    it("should not allow appliance usage if not enough electricity", function () {
 
-    //     const electricity = Electricity();
+        const electricity = Electricity();
 
-    //     electricity.topUpElectricity(10);
+        electricity.topUpElectricity(10);
 
-    //     assert.isTrue(electricity.useAppliance('TV'));
-    //     assert.equal(4, electricity.getUnitsAvailable());
+        assert.isTrue(electricity.useAppliance('TV'));
+        assert.equal(4, electricity.getUnitsAvailable());
         
-    //     assert.isFalse(electricity.useAppliance('Stove'));
-    //     assert.equal(4, electricity.getUnitsAvailable());
+        assert.isFalse(electricity.useAppliance('Stove'));
+        assert.equal(4, electricity.getUnitsAvailable());
         
-    //     assert.isTrue(electricity.useAppliance('TV'));
-    //     assert.equal(1, electricity.getUnitsAvailable());
+        assert.isTrue(electricity.useAppliance('TV'));
+        assert.equal(1, electricity.getUnitsAvailable());
 
-    //     assert.isFalse(electricity.useAppliance('TV'));
+        assert.isFalse(electricity.useAppliance('TV'));
 
-    //     assert.equal(1, electricity.getUnitsAvailable());
+        assert.equal(1, electricity.getUnitsAvailable());
 
-    // })
+    })
 
-    // it("should allow electricity usage after topping up with advance", function () {
+    it("should allow electricity usage after topping up with advance", function () {
 
-    //     const electricity = Electricity();
+        const electricity = Electricity();
 
-    //     electricity.topUpElectricity(10);
-    //     assert.isTrue(electricity.useAppliance('TV'));
+        electricity.topUpElectricity(10);
+        assert.isTrue(electricity.useAppliance('TV'));
 
-    //     // not enough electricity units (4 available)
-    //     assert.isFalse(electricity.useAppliance('Stove'));
-    //     assert.isFalse(electricity.useAppliance('Fridge'));
-    //     assert.isFalse(electricity.useAppliance('Kettle'));
+        // not enough electricity units (4 available)
+        assert.isFalse(electricity.useAppliance('Stove'));
+        assert.isFalse(electricity.useAppliance('Fridge'));
+        assert.isFalse(electricity.useAppliance('Kettle'));
 
-    //     electricity.topUpElectricity('advance');
-    //     assert.isTrue(electricity.useAppliance('Fridge'));
-    //     assert.isTrue(electricity.useAppliance('Stove'));
+        electricity.topUpElectricity('advance');
+        assert.isTrue(electricity.useAppliance('Fridge'));
+        assert.isTrue(electricity.useAppliance('Stove'));
 
-    //     assert.equal(2, electricity.getUnitsAvailable());
+        assert.equal(2, electricity.getUnitsAvailable());
 
-    // });
+    });
 
-    // it("should calculate the total amount spent", function() {
-    //     const electricity = Electricity();
+    it("should calculate the total amount spent", function() {
+        const electricity = Electricity();
         
-    //     // electricity.topUpElectricity(20);  // 14
-    //     electricity.topUpElectricity(10);  // 7
-    //     electricity.topUpElectricity(50);  // 35
-    //     electricity.topUpElectricity(20);  // 14
+        // electricity.topUpElectricity(20);  // 14
+        electricity.topUpElectricity(10);  // 7
+        electricity.topUpElectricity(50);  // 35
+        electricity.topUpElectricity(20);  // 14
 
-    //     assert.equal(80, electricity.totalAmountSpent());
-    // });
+        assert.equal(80, electricity.totalAmountSpent());
+    });
 
-    // it("should calculate the total amount units bought", function() {
-    //     const electricity = Electricity();
+    it("should calculate the total amount units bought", function() {
+        const electricity = Electricity();
 
-    //     electricity.topUpElectricity(20);  // 14
-    //     electricity.topUpElectricity(10);  // 7
-    //     electricity.topUpElectricity(50);  // 35
-    //     electricity.topUpElectricity(20);  // 14
+        electricity.topUpElectricity(20);  // 14
+        electricity.topUpElectricity(10);  // 7
+        electricity.topUpElectricity(50);  // 35
+        electricity.topUpElectricity(20);  // 14
 
-    //     electricity.useAppliance("TV")
-    //     electricity.useAppliance("Kettle")
+        electricity.useAppliance("TV")
+        electricity.useAppliance("Kettle")
 
-    //     assert.equal(100, electricity.totalAmountSpent());
-    //     assert.equal(62, electricity.getUnitsAvailable());
-    //     assert.equal(70, electricity.totalUnitsBought());
-    // });
+        assert.equal(100, electricity.totalAmountSpent());
+        assert.equal(62, electricity.getUnitsAvailable());
+        assert.equal(70, electricity.totalUnitsBought());
+    });
 
 })

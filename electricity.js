@@ -28,27 +28,26 @@ function Electricity() {
         if((amount-theAdvancedue)>=0){
             amountTracker = (amount-theAdvancedue)
             theAdvancedue=0;
-          
         }else if((amount-theAdvancedue)<0){
             theAdvancedue = (amount-theAdvancedue)*-1
             amountTracker=0;
-           
         }
       
         if(amountTracker >= 50){
             unitsAvailable += 35;
             totalUnits+=35;
-         
+            theAdvance=0;
         }else if(amountTracker >= 20){
-      
+          if(theAdvancedue===0){
             unitsAvailable += 14;
             totalUnits+=14;
-
-          
+            theAdvance=0;
+          }
+            
         }else if(amountTracker >= 10){
             unitsAvailable += 7;
             totalUnits+=7;
-       
+            theAdvance=0;
         }else if(amount === 'advance'&&theAdvance===0){
             theAdvancedue +=30
             theAdvance = 21; 
@@ -66,6 +65,23 @@ function Electricity() {
     * other wise return false and do nothing.
     */
     function useAppliance(appliance) {
+        if(appliance==="TV" && unitsAvailable>=3){
+            unitsAvailable-=3
+           return true
+        }else if(appliance==="stove" && unitsAvailable>=10){
+            unitsAvailable-=10
+            return true
+        }
+        else if(appliance==="Kettle" && unitsAvailable>=5){
+            unitsAvailable-=5
+            return true
+        }
+        else if(appliance==="Fridge" && unitsAvailable>=15){
+            unitsAvailable-=15
+            return true
+        }else{
+            return false
+        }
         
     }
 
